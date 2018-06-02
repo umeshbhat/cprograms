@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1527853337 source:/home/umesh/Desktop/graphs/dfs/main.cpp
+	<iostream>
+	<queue>
+	<vector>
+
