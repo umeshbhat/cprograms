@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1528001170 source:/home/umesh/Desktop/graphs/hackerrank/main.cpp
+	<bits/stdc++.h>
+	<string>
+
