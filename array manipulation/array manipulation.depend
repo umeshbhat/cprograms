@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1528081798 source:/home/umesh/Desktop/graphs/array manipulation/main.cpp
+	<iostream>
+	<algorithm>
+
