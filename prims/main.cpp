@@ -49,7 +49,8 @@ for(int v=0;v<V;v++)
 {
 if(graph[u][v] && !visited[v] && graph[u][v]<key[v])
 {
-parent[v]=u;key[v]=graph[u][v];
+parent[v]=u;
+key[v]=graph[u][v];
 }
 }
 }
