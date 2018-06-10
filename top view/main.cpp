@@ -1,4 +1,5 @@
 #include <iostream>
+#include<bits/stdc++.h>
 
 using namespace std;
 struct node
@@ -19,7 +20,7 @@ if (hd == line_no)
     printVerticalLine(head->right, line_no, hd+1);
 }
 
-void findminmax(struct node *root,int *min,int *max,int hd)
+void topView(struct node *root,int *min,int *max,int hd)
 {
 if(root==NULL)return;
 
@@ -30,16 +31,15 @@ else
 if(hd>*max)
 *max=hd;
 }
-findminmax(root->left,min,max,hd-1);
-findminmax(root->right,min,max,hd+1);
-
+topView(root->left,min,max,hd-1);
+topView(root->right,min,max,hd+1);
 }
 
 void travel(node *root)
 {
 
 int min=0,max=0,hd=0;
-findminmax(root,&min,&max,0);
+topView(root,&min,&max,0);
 for(int line_no = min; line_no <=max; line_no++)
     {
         printVerticalLine(root, line_no, 0);

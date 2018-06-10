@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1528626317 source:/home/umesh/Desktop/eleven essentials/common elements/main.cpp
+	<iostream>
+	<map>
+	<iterator>
+
