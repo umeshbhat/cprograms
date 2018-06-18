@@ -29,4 +29,4 @@ int main()
     for(int i=start;i<=ends;i++)
     cout<<a[i]<<" ";
     return 0;
-}
+}2543357

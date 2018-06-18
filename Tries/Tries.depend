@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1528797591 source:/home/umesh/Desktop/graphs/Tries/main.cpp
+	<iostream>
+	<string.h>
+	<stdlib.h>
+
