@@ -1,103 +1,62 @@
-#include <iostream>
-#include<string.h>
-#include<stdlib.h>
-
+#include<bits/stdc++.h>
+#include<vector>
+#include<iterator>
+#include<map>
+int a[100][100];
 using namespace std;
-
-struct node
+void color(int p,int q,int k,int m,int n)
 {
-bool is_end;
-int prefix_count;
-struct node * child[26];
-}*head;
-void init()
-{
-head=new node();
-head->prefix_count=0;
-head->is_end=false;
-}
-void inserts(string word)
-{
-node* current=head;
-current->prefix_count++;
-for(unsigned int i=0;i<word.length();i++)
-{
-int letter=(int)word[i]-(int)'a';
-if(current->child[letter]==NULL)
-{
-current->child[letter]=new node();
-}
-current->child[letter]->prefix_count++;
-current=current->child[letter];
-}
-current->is_end=true;
+    if(p<m && p>=0 && q<n && q>=0)
+    {
+        int oldcol=a[p][q];
+        a[p][q]=k;
+        if(p-1>=0 && a[p-1][q]==oldcol)
+        {
+            color(p-1,q,k,m,n);
+        }
+        if(p+1<m && a[p+1][q]==oldcol)
+        {
+            color(p+1,q,k,m,n);
+        }
+        if(q-1>=0 && a[p][q-1]==oldcol)
+        {
+            color(p,q-1,k,m,n);
+        }
+        if(q+1<n && a[p][q+1]==oldcol)
+        {
+            color(p,q+1,k,m,n);
+        }
+    }
 }
 
-bool search(string word)
-{
-node * current=head;
-for(unsigned  int i=0;i<word.length();i++)
-{
-if(current->child[(int)word[i]-(int)'a']==NULL)
-return false;
-current=current->child[(int)word[i]-(int)'a'];
-}
-return current->is_end;
-}
-int word_with_prefix(string word)
-{
-node * current=head;
-for( unsigned  int i=0;i<word.length();i++)
-{
-if(current->child[(int)word[i]-(int)'a']==NULL)
-return false;
-current=current->child[(int)word[i]-(int)'a'];
-}
-return true;
-
-}
-int namewith(string str)
-{
-node *crawl=head;
-for(unsigned int i=0;i<str.length();i++)
-{
-int index=(int)str[i]-(int)'a';
-if(crawl->child[index]==NULL)
-return 0;
-crawl=crawl->child[index];
-}
-
-return crawl->prefix_count;
-}
 int main()
 {
- init();
- int n;
- cin>>n;
- cin.ignore();
- for(int i=0;i<n;i++)
- {
- string inp;
- getline(cin,inp);
- char c;
- c=(char)inp[0];
- if(c == 'f')
- {
- cout<<"inside find"<<endl;
- string str;
- str=inp.substr(4);
- int count;
- count=namewith(str);
- cout<<count<<endl;
- }
- else if(c =='a')
- {
- cout<<"inside add"<<endl;
- string op;
- op=inp.substr(3);
- inserts(op);
- }
- else cout<<"Invalid input";
- }
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,m;
+        cin>>m>>n;
+        for(int i=0; i<m; i++)
+        {
+            for(int j=0; j<n; j++)
+            {
+                cin>>a[i][j];
+            }
+        }
+        int p,q,k;
+        cin>>p>>q>>k;
+        color(p,q,k,m,n);
+        for(int i=0; i<m; i++)
+        {
+            for(int j=0; j<n; j++)
+            {
+                cout<<a[i][j]<<" ";
+            }
+        }
+        cout<<endl;
+
+    }
     return 0;
+
 }
